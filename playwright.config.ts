@@ -1,4 +1,4 @@
-import { defineConfig, devices } from '@playwright/test';
+import { defineConfig, devices, ViewportSize } from '@playwright/test';
 
 /**
  * Read environment variables from file.
@@ -31,10 +31,18 @@ export default defineConfig({
 
   /* Configure projects for major browsers */
   projects: [
-    {
-      name: 'chromium',
-      use: { ...devices['Desktop Chrome'] },
+    
+  {
+    name : 'Chromium - Anonymous user ',
+    testDir: 'tests/anonymousUser',
+    testMatch : /.*\.spec.ts/,
+    use: {
+      ...devices['Desktop Chrome'],
+      viewport : { width :1920, height: 1080} as ViewportSize,
+     
     },
+
+  },
   ],
 
   /* Run your local dev server before starting the tests */
